@@ -45,24 +45,23 @@ graph LR
 
 ```text
 hospital_etl_pipeline/
-├── data/
-│   └── raw/                        # Generated raw synthetic CSV & JSON data
-├── src/
-│   └── hospital_pipeline/
-│       ├── config.py               # Database connections & environment settings
-│       ├── extract.py              # Reads CSV/JSON data from 5 source systems
-│       ├── transform.py            # Cleans, standardizes & PHI anonymizes data
-│       ├── validate.py             # Data Quality Gate rules engine
-│       ├── risk_engine.py          # Clinical risk scoring algorithm
-│       ├── load.py                 # Upserts star schema into MySQL
-│       ├── logger.py               # Logging helper
-│       └── pipeline.py             # Main ETL pipeline orchestrator
+├── hospital_pipeline/             # Main ETL pipeline module
+│   ├── config.py               # Database connections & environment settings
+│   ├── extract.py              # Reads CSV/JSON data from 5 source systems
+│   ├── transform.py            # Cleans, standardizes & PHI anonymizes data
+│   ├── validate.py             # Data Quality Gate rules engine
+│   ├── risk.py                 # Clinical risk scoring algorithm
+│   ├── load.py                 # Upserts star schema into MySQL
+│   ├── logging_setup.py        # Logging configuration helper
+│   └── pipeline.py             # Main ETL pipeline orchestrator
 ├── scripts/
 │   └── generate_synthetic_data.py  # Data generator with realistic defects
 ├── tests/                          # Automated unit tests for ETL logic
+│   ├── conftest.py
 │   ├── test_transform.py
 │   ├── test_validate.py
 │   └── test_risk.py
+├── docs/                           # Architecture & design documentation
 ├── .env.example                    # Environment template
 ├── .gitignore                      # Ignores secrets, raw data, logs
 ├── README.md                       # Project documentation
