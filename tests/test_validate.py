@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from src.hospital_pipeline.validate import validate
+from hospital_pipeline.validate import validate
 
 def test_null_pk_fails():
     """Test critical rule: null PK fails."""

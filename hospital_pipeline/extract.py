@@ -3,7 +3,7 @@ import time
 import requests
 import pandas as pd
 import logging
-from src.hospital_pipeline.config import RAW_DATA_DIR
+from hospital_pipeline.config import RAW_DATA_DIR
 
 logger = logging.getLogger('hospital_pipeline')
 

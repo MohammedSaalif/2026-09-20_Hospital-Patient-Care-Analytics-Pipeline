@@ -1,7 +1,7 @@
 import pytest
 import pandas as pd
 from datetime import datetime
-from src.hospital_pipeline.risk import calculate_risk_scores
+from hospital_pipeline.risk import calculate_risk_scores
 
 def test_elderly_patient_age_points():
     """Test elderly patient gets age points."""

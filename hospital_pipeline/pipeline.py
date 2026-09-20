@@ -3,13 +3,13 @@ import time
 import pandas as pd
 import logging
 from datetime import datetime
-from src.hospital_pipeline.config import get_engine, check_database_connection, API_BASE_URL, SOURCE_API_KEY
-from src.hospital_pipeline.logging_setup import setup_logging
-from src.hospital_pipeline.extract import extract
-from src.hospital_pipeline.transform import transform
-from src.hospital_pipeline.validate import validate
-from src.hospital_pipeline.risk import calculate_risk_scores
-from src.hospital_pipeline.load import load
+from hospital_pipeline.config import get_engine, check_database_connection, API_BASE_URL, SOURCE_API_KEY
+from hospital_pipeline.logging_setup import setup_logging
+from hospital_pipeline.extract import extract
+from hospital_pipeline.transform import transform
+from hospital_pipeline.validate import validate
+from hospital_pipeline.risk import calculate_risk_scores
+from hospital_pipeline.load import load
 
 def run_pipeline():
     """Orchestrates the entire ETL pipeline."""

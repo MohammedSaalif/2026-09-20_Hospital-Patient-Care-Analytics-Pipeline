@@ -2,7 +2,7 @@ import pytest
 import os
 import pandas as pd
 from sqlalchemy import create_engine
-import src.hospital_pipeline.config as config
+import hospital_pipeline.config as config
 
 TEST_DB_PATH = os.path.join(os.path.dirname(__file__), "test_hospital.db")
 

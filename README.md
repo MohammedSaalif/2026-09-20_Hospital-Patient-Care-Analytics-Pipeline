@@ -92,7 +92,7 @@ python3 -m scripts.generate_synthetic_data
 
 ### 3. Run the End-to-End ETL Pipeline
 ```bash
-python3 -m src.hospital_pipeline.pipeline
+python3 -m hospital_pipeline.pipeline
 ```
 
 ### 4. Run Unit Tests (20/20 Passed)

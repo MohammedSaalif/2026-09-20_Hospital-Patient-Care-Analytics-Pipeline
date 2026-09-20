@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from src.hospital_pipeline.transform import transform
+from hospital_pipeline.transform import transform
 import hashlib
 
 def test_deduplication():

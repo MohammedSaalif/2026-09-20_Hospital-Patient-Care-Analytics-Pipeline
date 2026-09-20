@@ -3,7 +3,7 @@ import numpy as np
 import hashlib
 import logging
 import os
-from src.hospital_pipeline.config import STAGING_DATA_DIR
+from hospital_pipeline.config import STAGING_DATA_DIR
 
 logger = logging.getLogger('hospital_pipeline')
 
