@@ -12,35 +12,24 @@ __pycache__/
 dist/
 build/
 
-# Data (raw and cleaned are regenerated)
+# Data Folders (Keep folder structure in Git via .gitkeep)
 data/raw/*
 !data/raw/.gitkeep
+data/cleaned/*
+!data/cleaned/.gitkeep
 
 # Logs
-logs/
+logs/*
+!logs/.gitkeep
 
 # Database
 *.db
 *.sqlite3
 test_hospital.db
 
-# IDE
+# IDE & OS
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-
-# OS
 .DS_Store
 Thumbs.db
-
-# Jupyter
 .ipynb_checkpoints/
-
-__pycache__/
-*.pyc
-.venv/
-.env
-data/
-logs/
