@@ -19,7 +19,7 @@ SOURCE_API_KEY = os.getenv('SOURCE_API_KEY', 'demo-key-change-me')
 
 # Paths
 RAW_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'raw'))
-STAGING_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'staging'))
+CLEANED_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'cleaned'))
 
 def get_engine(test_mode: bool = False):
     """

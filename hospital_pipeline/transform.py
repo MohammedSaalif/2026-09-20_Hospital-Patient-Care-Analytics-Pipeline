@@ -3,7 +3,6 @@ import numpy as np
 import hashlib
 import logging
 import os
-from hospital_pipeline.config import STAGING_DATA_DIR
 
 logger = logging.getLogger('hospital_pipeline')
 
@@ -17,7 +16,6 @@ def transform(raw_data: dict[str, pd.DataFrame], run_id: str) -> dict[str, pd.Da
     Cleans, normalizes, and enriches raw data.
     """
     transformed = {}
-    os.makedirs(STAGING_DATA_DIR, exist_ok=True)
     
     for name, df in raw_data.items():
         if df.empty:
@@ -140,13 +138,6 @@ def transform(raw_data: dict[str, pd.DataFrame], run_id: str) -> dict[str, pd.Da
             df_clean['shortness_of_breath_flag'] = df_clean['note_text'].str.contains('shortness of breath').astype(int)
             
         logger.info(f"Completed {name}: {len(df_clean)} rows remaining.")
-        
-        # Save to staging
-        if name in ['wearable_readings', 'consultation_notes']:
-            df_clean.to_json(os.path.join(STAGING_DATA_DIR, f"{name}.json"), orient='records')
-        else:
-            df_clean.to_csv(os.path.join(STAGING_DATA_DIR, f"{name}.csv"), index=False)
-            
         transformed[name] = df_clean
         
     return transformed
