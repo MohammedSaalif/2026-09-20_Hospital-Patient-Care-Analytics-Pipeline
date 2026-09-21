@@ -18,8 +18,8 @@ API_BASE_URL = os.getenv('API_BASE_URL', 'http://localhost:8000')
 SOURCE_API_KEY = os.getenv('SOURCE_API_KEY', 'demo-key-change-me')
 
 # Paths
-RAW_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'raw'))
-STAGING_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'staging'))
+RAW_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'raw'))
+STAGING_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'staging'))
 
 def get_engine(test_mode: bool = False):
     """

@@ -1,5 +1,6 @@
 import uuid
 import time
+import os
 import pandas as pd
 import logging
 from datetime import datetime
@@ -70,6 +71,24 @@ def run_pipeline():
         )
         transformed_data['patient_risk'] = risk_df
         
+        # EXPORT CLEANED CSV DATASETS FOR EASY INSPECTION
+        cleaned_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'cleaned')
+        os.makedirs(cleaned_dir, exist_ok=True)
+        
+        for name, df in transformed_data.items():
+            if isinstance(df, pd.DataFrame) and not df.empty:
+                df.to_csv(os.path.join(cleaned_dir, f"{name}.csv"), index=False)
+                
+        # Create integrated master cleaned dataset (merged view)
+        p_df = transformed_data.get('patients', pd.DataFrame())
+        a_df = transformed_data.get('appointments', pd.DataFrame())
+        if not p_df.empty and not a_df.empty and 'patient_id' in p_df.columns and 'patient_id' in a_df.columns:
+            integrated_df = pd.merge(p_df, a_df, on='patient_id', how='left')
+            if not risk_df.empty and 'patient_id' in risk_df.columns:
+                integrated_df = pd.merge(integrated_df, risk_df[['patient_id', 'risk_score', 'risk_level', 'risk_reasons']], on='patient_id', how='left')
+            integrated_df.to_csv(os.path.join(cleaned_dir, 'integrated_cleaned_dataset.csv'), index=False)
+            logger.info(f"Exported integrated cleaned dataset to {cleaned_dir}/integrated_cleaned_dataset.csv")
+
         # LOAD
         loaded_counts = load(transformed_data, engine, run_id)
         summary['loaded'] = loaded_counts
